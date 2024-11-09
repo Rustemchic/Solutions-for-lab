@@ -1,1 +1,70 @@
 
+public class Main {
+    public static void main(String[] args) {
+        Time time1 = new Time(10, 30, 45); // 10:30:45
+        Time time2 = new Time(12, 15, 30); // 12:15:30
+
+        System.out.println("Time 1: " + time1);
+        System.out.println("Time 2: " + time2);
+
+        Time difference = Time.difference(time1, time2);
+        System.out.println("Difference: " + difference);
+
+        time1.advanceByOneSecond();
+        System.out.println("Time 1 after advancing by one second: " + time1);
+    }
+
+}
+public class Time {
+    private int hours;   
+    private int minutes;
+    private int seconds; 
+    public Time(int hours, int minutes, int seconds) {
+        this.hours = hours;
+        this.minutes = minutes;
+        this.seconds = seconds;
+        normalize(); 
+    }
+
+    private void normalize() {
+        if (seconds >= 60) {
+            minutes += seconds / 60;
+            seconds %= 60;
+        }
+        if (minutes >= 60) {
+            hours += minutes / 60;
+            minutes %= 60;
+        }
+
+    }
+
+    public static Time difference(Time t1, Time t2) {
+        int totalSeconds1 = t1.toSeconds();
+        int totalSeconds2 = t2.toSeconds();
+        int diff = Math.abs(totalSeconds1 - totalSeconds2);
+        return fromSeconds(diff);
+    }
+
+    private int toSeconds() {
+        return hours * 3600 + minutes * 60 + seconds;
+    }
+
+
+    private static Time fromSeconds(int totalSeconds) {
+        int hours = totalSeconds / 3600;
+        int minutes = (totalSeconds % 3600) / 60;
+        int seconds = totalSeconds % 60;
+        return new Time(hours, minutes, seconds);
+    }
+
+
+    public Time advanceByOneSecond() {
+        seconds++;
+        normalize();
+        return this; 
+    }
+
+    public String toString() {
+        return String.format("%02d:%02d:%02d", hours, minutes, seconds);
+    }
+}
