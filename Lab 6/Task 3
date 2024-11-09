@@ -1,1 +1,13 @@
 
+public class Main {
+
+    public static void main(String[] args) {
+        char v = 'A';
+        int a = v;
+        char[] letters = new char[26];
+        for (int i = 0; i < 26; i++) {
+            letters[i] = (char) (a + i);
+            System.out.println(letters[i] + " has index " + (a + i));
+        }
+    }
+}
