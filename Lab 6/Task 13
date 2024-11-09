@@ -1,1 +1,22 @@
 
+public class Main {
+ public static void main(String[] args) {
+ String path = "lab5/src/task4/PathnameChecking.java"
+;
+ if (checkPath(path)) {
+ System.out.println(path + " is a " +
+ (isFile(path) ? "file" : "directory"));
+ } else {
+ System.out.println
+("Error: file doesn't exist!");
+ }
+ }
+ private static boolean checkPath(String path) {
+ File file = new File(path);
+ return file.exists();
+ }
+ private static boolean isFile(String path) {
+ File file = new File(path);
+ return file.isFile();
+ }
+}
