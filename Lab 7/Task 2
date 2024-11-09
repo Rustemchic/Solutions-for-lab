@@ -2,8 +2,8 @@
 import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) {
-        Author author1 = new Author( );
-        Book book1 = new Book();
+        Author author1 = new Author( );\\ add somethink
+        Book book1 = new Book();\\\\ add somethink
 
         Library library = new Library();
         library.addBook(book1);
