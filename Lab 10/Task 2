@@ -1,1 +1,91 @@
 
+import java.util.ArrayList;
+
+public class Main {
+    public static void main(String[] args) {
+        ArrayList<Creature> creatures = new ArrayList<>();
+
+        creatures.add(new Human());
+        creatures.add(new Dog());
+        creatures.add(new Alien());
+
+        for (Creature creature : creatures) {
+            creature.bear();
+            creature.die();
+        }
+
+
+        Creature dog = new Dog();
+        dog.bear();
+        ((Dog) dog).bark();
+    }
+}
+abstract class Creature {
+    String name = null;
+    boolean isAlive = false;
+
+    public abstract void bear();
+    public abstract void die();
+
+    public void shoutName() {
+        if (name != null) {
+            System.out.println(name);
+        } else {
+            System.out.println("Error: Name is not set.");
+        }
+    }
+}
+
+
+abstract class Animal extends Creature {
+
+}
+
+
+final class Human extends Animal {
+
+    public void bear() {
+        this.name = "Human";
+        this.isAlive = true;
+        System.out.println("The Human " + name + " was born");
+    }
+
+
+    public void die() {
+        System.out.println("The Human " + name + " has died");
+    }
+}
+
+
+final class Dog extends Animal {
+
+    public void bear() {
+        this.name = "Dog";
+        this.isAlive = true;
+        System.out.println("The Dog " + name + " was born");
+    }
+
+
+    public void die() {
+        System.out.println("The Dog " + name + " has died");
+    }
+
+    public void bark() {
+        System.out.println(name + " says: Woof!");
+    }
+}
+
+
+class Alien extends Creature {
+
+    public void bear() {
+        this.name = "Alien";
+        this.isAlive = true;
+        System.out.println("The Alien " + name + " was born");
+    }
+
+
+    public void die() {
+        System.out.println("The Alien " + name + " has died");
+    }
+}
