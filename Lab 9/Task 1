@@ -1,1 +1,47 @@
 
+public class Main {
+    public static void main(String[] args) {
+Dog big = new Dog("Alex","black",56,34);
+        Cat small = new Cat("Arsi","white",2,12);
+System.out.println(big.eat());
+        System.out.println(small.eat());
+        System.out.println(big.sound());
+        System.out.println(small.sound());
+
+
+    }
+}
+
+class Animal {
+    String name;
+    String color;
+    int weight;
+    int height;
+    public Animal(String name, String color, int weight, int height) {
+        this.name = name;
+        this.color = color;
+        this.weight = weight;
+        this.height = height;
+    }
+    public String sleep() {
+        return "it Sleep";
+    }
+    public String eat() {
+        return "it Eat";
+    }
+    public String sound() {
+        return "it Sound";
+    }
+}
+class Dog extends Animal {
+    public Dog(String name, String color, int weight, int height) {
+        super(name, color, weight, height);
+    }
+}
+class Cat extends Animal {
+    public Cat(String name, String color, int weight, int height) {
+        super(name, color, weight, height);
+
+    }
+
+}
