@@ -1,1 +1,31 @@
 
+import java.util.Scanner;
+
+public class Main {
+
+    public static int ifal(String input) {
+        if (input == null || input.isEmpty()) {
+            return 0; // Возвращаем 0, если входная строка null или пустая
+        }
+
+        int count = 0;
+        String vowels = "aeiouAEIOU"; // Строка, содержащая все гласные
+
+        for (char c : input.toCharArray()) {
+            if (vowels.indexOf(c) != -1) {
+                count++; // Увеличиваем счетчик, если символ является гласной
+            }
+        }
+
+        return count; // Возвращаем общее количество гласных
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String a = sc.nextLine();
+
+
+        int vowelCount = ifal(a);
+        System.out.println("Количество гласных в строке: " + vowelCount);
+    }
+}
