@@ -1,0 +1,56 @@
+abstract class Creature {
+    protected String name = null; 
+    protected boolean isAlive = false; 
+
+
+    public abstract void bear();
+    public abstract void die();
+
+    // Неабстрактный метод
+    public void shoutName() {
+        if (name != null) {
+            System.out.println("Имя: " + name);
+        } else {
+            System.out.println("Ошибка: имя не задано.");
+        }
+    }
+}
+class Human extends Creature {
+    public void bear() {
+        name = "Человек"; 
+        isAlive = true; 
+        System.out.println("Human " + name + " родился");
+    }
+
+
+    public void die() {
+        System.out.println("Human " + name + " умер");
+    }
+}
+class Dog extends Creature {
+    public void bear() {
+        name = "Собака"; 
+        isAlive = true; 
+        System.out.println("Dog " + name + " родился");
+    }
+    
+    public void die() {
+        System.out.println("Dog " + name + " умер");
+    }
+
+    // Метод bark
+    public void bark() {
+        System.out.println(name + " говорит: Гав!");
+    }
+}
+class Alien extends Creature {
+    public void bear() {
+        name = "Инопланетянин"; 
+        isAlive = true; 
+        System.out.println("Alien " + name + " родился");
+    }
+    
+    public void die() {
+        System.out.println("Alien " + name + " умер");
+    }
+}
