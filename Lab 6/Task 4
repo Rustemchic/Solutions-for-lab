@@ -1,1 +1,19 @@
 
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String a = sc.nextLine();
+        String b = sc.nextLine();
+
+        if (a.equals(b)) {
+            System.out.println("Строки равны.");
+        } else if (a.compareTo(b) < 0) {
+            System.out.println("Первая строка меньше второй.");
+        } else {
+            System.out.println("Первая строка больше второй.");
+        }
+
+    }
+}
