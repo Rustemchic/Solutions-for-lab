@@ -1,1 +1,15 @@
 
+public class Main {
+    public static void main(String[] args) {
+        int[] numbers = new int[]{1, 2, 5, 0, 9, 8, 845, 9, 10, 55};
+        System.out.println("The average is " + calculateAverage(numbers));
+    }
+    public   static calculateAverage(int[] numbers) {
+        float avg = 0;
+        for (int number : numbers) {
+            avg += number;
+        }
+        avg /= numbers.length;
+        return avg;
+    }
+}
