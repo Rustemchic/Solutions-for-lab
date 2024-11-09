@@ -1,12 +1,47 @@
+import java.util.ArrayList;
+public class Main {
+    public static void main(String[] args) {
+        ArrayList<Creature> creatures = new ArrayList<>();
+Alien a = new Alien();
+Human b = new Human();
+Dog c = new Dog();
+
+        Alien a1 = new Alien();
+
+        creatures.add(b);
+        creatures.add(a1);
+        creatures.add(c);
+        creatures.add(a);
+        creatures.add(a1);
+        for (Creature creature : creatures) {
+            creature.bear();
+            creature.shoutName();
+            creature.die();
+
+            if (creature instanceof Dog) {
+                ((Dog) creature).bark();
+            }
+        }
+        f();
+        for (Creature creature : creatures) {
+            creature.chowname();
+        }
+    }
+    static void f() {
+        System.out.println("Список всех кого созадали :");
+    }
+
+}
+
 abstract class Creature {
-    protected String name = null; 
-    protected boolean isAlive = false; 
+    protected String name = null;
+    protected boolean isAlive = false;
+
 
 
     public abstract void bear();
     public abstract void die();
 
-    // Неабстрактный метод
     public void shoutName() {
         if (name != null) {
             System.out.println("Имя: " + name);
@@ -14,11 +49,15 @@ abstract class Creature {
             System.out.println("Ошибка: имя не задано.");
         }
     }
+    public void chowname(){
+        System.out.println("-"+name);
+    }
+
 }
 class Human extends Creature {
     public void bear() {
-        name = "Человек"; 
-        isAlive = true; 
+        name = "Человек";
+        isAlive = true;
         System.out.println("Human " + name + " родился");
     }
 
@@ -29,11 +68,11 @@ class Human extends Creature {
 }
 class Dog extends Creature {
     public void bear() {
-        name = "Собака"; 
-        isAlive = true; 
+        name = "Собака";
+        isAlive = true;
         System.out.println("Dog " + name + " родился");
     }
-    
+
     public void die() {
         System.out.println("Dog " + name + " умер");
     }
@@ -45,11 +84,11 @@ class Dog extends Creature {
 }
 class Alien extends Creature {
     public void bear() {
-        name = "Инопланетянин"; 
-        isAlive = true; 
+        name = "Инопланетянин";
+        isAlive = true;
         System.out.println("Alien " + name + " родился");
     }
-    
+
     public void die() {
         System.out.println("Alien " + name + " умер");
     }
