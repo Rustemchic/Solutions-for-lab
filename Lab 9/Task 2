@@ -1,1 +1,95 @@
 
+public class Main {
+    public static void main(String[] args) {
+        Share fig1 = new Circle(10);
+        Share fig2 = new Squer(5);
+        Share fig3 = new Rectangle(10,2);
+        Share fig4 = new Elips  (6,12);
+    }
+
+
+}
+
+class Share{
+    protected int  a;
+    protected int b;
+    public double P;
+    protected double  S;
+    protected Share(int a){
+        this.a = a;
+        fin();
+
+    }
+    protected Share(int a, int b){
+        this.a = a;
+        this.b = b;
+        fin();
+    }
+    protected void fin(){
+        System.out.printf("Площадь и периметр = ");
+    }
+
+
+}
+class Squer extends Share{
+    public Squer(int a) {
+        super(a);
+        f();
+    }
+    protected void f(){
+        this.P=this.a*4;
+        this.S=this.a*this.a;
+        System.out.println(this.S+" "+this.P);
+    }
+}
+class Trianglee extends Share{
+    public Trianglee(int a){
+        super(a);
+        f();
+
+    }
+    void f(){
+        this.P = 3*this.a;
+        this.S = a*a*Math.sqrt(3);
+        System.out.println(this.S+" "+this.P);
+    }
+}
+class Rectangle extends Share{
+    public Rectangle(int a, int b) {
+        super(a, b);
+        f();
+    }
+    void f(){
+        this.P =2*a*b;
+        this.S = a*b;
+        System.out.println(this.S+" "+this.P);
+    }
+}
+class Elips extends Share{
+    public Elips(int a, int b) {
+        super(a, b);
+        f();
+    }
+
+    void f(){
+        this.S = this.a*this.b*22/7;
+        this.P = 2*22/7*Math.sqrt(this.a*this.b/2);
+        System.out.println(this.S + " " + this.P);
+    }
+
+}
+
+
+
+
+class Circle extends Share{
+    public Circle(int a){
+        super(a);
+        f();
+    }
+    void f(){
+        this.S = this.a*this.a*22/7;
+        this.P = this.a*22/7*2;
+        System.out.println(this.S + " " + this.P);
+    }
+}
