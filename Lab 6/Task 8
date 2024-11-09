@@ -1,1 +1,11 @@
 
+
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Please, print the integer value: ");
+        Scanner sc = new Scanner(System.in);
+        int value = sc.nextInt();
+        System.out.printf("The scanned value: %n" + "in decimal: %d,%n" + "in hexadecimal: %h,%n" + "in binary: %s", value, value, Integer.toBinaryString(value));
+    }
+}
