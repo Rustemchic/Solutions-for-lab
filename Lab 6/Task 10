@@ -1,1 +1,45 @@
 
+import java.util.Arrays; // Импортируем класс Arrays для работы с массивами
+import java.util.Scanner; // Импортируем класс Scanner для считывания ввода пользователя
+
+public class  Main{
+    public static void main(String[] args) {
+        int[] numbers = new int[]{1, 2, 5, 0, 9, 8, 845, 9, 10, 55};
+
+        // Выводим массив до вставки элемента
+        System.out.println("Before insertion: " + Arrays.toString(numbers));
+
+        // Вставляем элемент в массив и выводим результат
+        int[] updatedNumbers = insertElement(numbers);
+        System.out.println("After insertion: " + Arrays.toString(updatedNumbers));
+    }
+
+    private static int[] insertElement(int[] numbers) {
+        Scanner scanner = new Scanner(System.in); // Создаем объект Scanner для считывания ввода
+
+        int index; // Переменная для хранения индекса, куда будет вставлен элемент
+        do {
+            System.out.printf("Choose array element index to insert from 0 to %d: ", numbers.length);
+            index = scanner.nextInt(); // Считываем индекс
+        } while (index < 0 || index > numbers.length); // Проверяем, что индекс корректен
+
+        System.out.print("Choose the value to insert: ");
+        int valueToInsert = scanner.nextInt(); // Считываем значение
+
+        // Создаем новый массив, который будет на 1 элемент больше
+        int[] newNumbers = new int[numbers.length + 1];
+
+        // Копируем элементы из старого массива в новый
+        for (int i = 0; i < newNumbers.length; i++) {
+            if (i < index) {
+                newNumbers[i] = numbers[i]; // Копируем элементы до индекса
+            } else if (i == index) {
+                newNumbers[i] = valueToInsert; // Вставляем новый элемент
+            } else {
+                newNumbers[i] = numbers[i - 1]; // Копируем оставшиеся элементы
+            }
+        }
+
+        return newNumbers; // Возвращаем новый массив
+    }
+}
