@@ -49,3 +49,114 @@ public class Main {
         }
 
 
+
+enum Drinks{
+COCA("Coka-Cola", 52),
+SPRITE("Sprite", 40),
+FANTA("Fanta",30);
+    private final String name;
+    private final int cost;
+
+    Drinks(String name, int cost) {
+        this.name = name;
+        this.cost = cost;
+
+    }
+    public String getName() {
+        return name;
+    }
+    public int getPrice() {
+        return cost;
+    }
+
+}
+enum Money {
+    ONE_DOLLAR(1),
+    FIVE_DOLLARS(5),
+    TEN_DOLLARS(10),
+    TWENTY_DOLLARS(20),
+    FIFTY_DOLLARS(50),
+    HUNDRED_DOLLARS(100);
+
+    private final int cost;
+
+    Money(int cost) {
+        this.cost= cost;
+    }
+
+    public int getDenomination() {
+        return cost;
+    }
+}
+
+
+class Whatisithope {
+    public int dif(String drink) {
+        switch (drink) {
+            case "Coca-Cola":
+                return 52;
+            case "Sprite":
+                return 40;
+            case "Fanta":
+                return 30;
+            default:
+                return -1;
+        }
+    }
+    private int balance = 0;
+
+    public void displayMenu() {
+        System.out.println("Меню:");
+        for (Drinks drink : Drinks.values()) {
+            System.out.println(drink.getName() + " - " + drink.getPrice() + " рублей");
+        }
+    }
+
+    public void inputmoney(int amount) {
+        if (amount <= 0) {
+            System.out.println("Сумма должна быть положительной.");
+        }
+        if (amount >  0) {
+            balance += amount;
+            System.out.println("Вы внесли " + amount + " рублей. Текущий баланс: " + balance + " рублей.");
+        }
+    }
+
+    public void buyDrink(String drinker){
+    String drinkers = drinker;
+        int a = dif(drinkers);
+
+        if (balance < a) {
+           System.out.println("Недостаточно денег для покупки.");
+        }
+        else if (a ==-1){
+            System.out.println("Tы по-моему перепутал.");
+
+        }
+        if (a!=-1) {
+            balance -= a;
+            System.out.println("Вы купили " + drinker + " за " + a + " рублей. Остаток: " + balance + " рублей.");
+        }
+    }
+
+    public void returnMoney() {
+        if (balance == 0) {
+            System.out.println("Нет денег для возврата.");
+            return;
+        }
+
+        int returnAmount = balance;
+        balance = 0;
+        System.out.println("Возврат " + returnAmount + " рублей.");
+
+        List<Integer> change = new ArrayList<>();
+        for (Money money : Money.values()) {
+            while (returnAmount >= money.getDenomination()) {
+                change.add(money.getDenomination());
+                returnAmount -= money.getDenomination();
+            }
+        }
+
+        System.out.println("Возвращенные банкноты: " + change);
+    }
+}
