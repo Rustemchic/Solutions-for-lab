@@ -1,0 +1,81 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class Main {
+    public static void main(String[] args) {
+        MediaLibrary mediaLibrary = new MediaLibrary();
+        mediaLibrary.addMedia(new Book("2024", "Rustem"));
+        mediaLibrary.addMedia(new Video("Inception", "Christopher Nolan"));
+        mediaLibrary.addMedia(new Newspaper("The Daily News", "2023-10-01"));
+
+        for (Media media : mediaLibrary.getMediaItems()) {
+            System.out.println(media.getInfo());
+        }
+    }
+}
+
+
+class MediaLibrary {
+    private List<Media> mediaItems;
+
+    public MediaLibrary() {
+        mediaItems = new ArrayList<>();
+    }
+
+    public void addMedia(Media media) {
+        mediaItems.add(media);
+    }
+
+    public void removeMedia(Media media) {
+        mediaItems.remove(media);
+    }
+
+    public List<Media> getMediaItems() {
+        return mediaItems;
+    }
+}
+interface Media {
+    String getInfo();
+}
+class Book implements Media {
+    private String title;
+    private String author;
+
+    public Book(String title, String author) {
+        this.title = title;
+        this.author = author;
+    }
+    public String getInfo() {
+        return "Book: " + title + " by " + author;
+    }
+}
+
+class Video implements Media {
+    private String title;
+    private String director;
+
+    public Video(String title, String director) {
+        this.title = title;
+        this.director = director;
+    }
+
+    public String getInfo() {
+        return "Video: " + title + " directed by " + director;
+    }
+}
+
+class Newspaper implements Media {
+    private String title;
+    private String date;
+
+    public Newspaper(String title, String date) {
+        this.title = title;
+        this.date = date;
+    }
+
+    public String getInfo() {
+        return "Newspaper: " + title + " dated " + date;
+    }
+}
+
+
